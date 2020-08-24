@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Card from "../components/Card/index";
 import { Button } from "../styles/styles";
 import Header from "../components/Header/index";
-import styled from "styled-components";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router";
 
 const baseURL = "https://navedex-api.herokuapp.com/v1";
 
 const LoginPage = (props) => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +19,13 @@ const LoginPage = (props) => {
       password: password,
     };
 
-    const response = await axios.post(`${baseURL}/users/login`, body);
-    window.localStorage.setItem("token", response.data.token);
+    try {
+      const response = await axios.post(`${baseURL}/users/login`, body);
+      window.localStorage.setItem("token", response.data.token);
+      history.push("/home");
+    } catch (e) {
+      alert("Dados incorretos, tente novamente.");
+    }
   };
 
   return (
@@ -39,6 +44,7 @@ const LoginPage = (props) => {
         <TextField
           variant="outlined"
           name={"senha"}
+          type="password"
           value={password}
           label={"Senha"}
           onChange={(e) => setPassword(e.target.value)}

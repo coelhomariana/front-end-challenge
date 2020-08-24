@@ -12,17 +12,6 @@ class HomePage extends React.Component {
     };
   }
 
-  componentDidMount = () => {
-    this.getNavers();
-  };
-
-  getNavers = async () => {
-    const response = await axios.get(
-      "https://navedex-api.herokuapp.com/v1/navers"
-    );
-    console.log(response);
-  };
-
   render() {
     return (
       <>
