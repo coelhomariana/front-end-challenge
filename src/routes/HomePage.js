@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header/index";
 import axios from "axios";
-import NaverCard from "../components/NaverCard";
 import { useHistory } from "react-router";
-import Typography from "@material-ui/core/Typography";
+import styled from "styled-components";
 
 const baseURL = "https://navedex-api.herokuapp.com/v1";
 
-const HomePage = () => {
+const NaverCardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const NaverCard = styled.div`
+  width: 280px;
+  height: 376px;
+  border: 1px solid black;
+`;
+
+const HomePage = (props) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -44,10 +54,16 @@ const HomePage = () => {
     <>
       <Header></Header>
       <div>
-        <Typography variant="h4">Navers</Typography>
+        <h1>Navers</h1>
         <div>
-          {naversLists.map((naver) => {
-            return <div></div>;
+          {naversList.map((naver) => {
+            return (
+              <NaverCardContainer>
+                <NaverCard>
+                  {naver.name} {naver.job_role}
+                </NaverCard>
+              </NaverCardContainer>
+            );
           })}
         </div>
         <button onClick={getNaversList}>Botão teste pro GET</button>

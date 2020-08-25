@@ -15,32 +15,6 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
-
-  return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="subtitle2" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <DeleteIcon></DeleteIcon>
-        <EditIcon></EditIcon>
-      </CardActions>
-    </Card>
-  );
+export default function NaverCard(props) {
+  return <div className="card">{props.naver.name}</div>;
 }
