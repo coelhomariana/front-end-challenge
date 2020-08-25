@@ -1,4 +1,8 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px;
   position: absolute;
   width: 448px;
   height: 408px;

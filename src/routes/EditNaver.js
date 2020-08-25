@@ -39,8 +39,8 @@ const AddNaverPage = () => {
 
   const onClickSalvar = async () => {
     const response = await axios
-      .post(
-        "https://navedex-api.herokuapp.com/v1/navers",
+      .put(
+        `https://navedex-api.herokuapp.com/v1/navers/`,
         {
           job_role: jobRole,
           admission_date: admission_date,

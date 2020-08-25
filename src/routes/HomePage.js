@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header/index";
 import axios from "axios";
 import NaverCard from "../components/NaverCard";
 import { useHistory } from "react-router";
+import Typography from "@material-ui/core/Typography";
+
+const baseURL = "https://navedex-api.herokuapp.com/v1";
 
 const HomePage = () => {
   const history = useHistory();
@@ -15,12 +18,39 @@ const HomePage = () => {
     }
   }, [history]);
 
+  const [naversList, setNaversList] = useState([]);
+
+  const getNaversList = () => {
+    axios
+      .get(`${baseURL}/navers`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setNaversList(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getNaversList();
+  }, [setNaversList]);
+
   return (
     <>
       <Header></Header>
       <div>
-        <h1>Navers</h1>
-        <NaverCard></NaverCard>
+        <Typography variant="h4">Navers</Typography>
+        <div>
+          {naversLists.map((naver) => {
+            return <div></div>;
+          })}
+        </div>
+        <button onClick={getNaversList}>Botão teste pro GET</button>
       </div>
     </>
   );
