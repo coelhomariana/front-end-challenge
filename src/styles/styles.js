@@ -31,7 +31,7 @@ export const StyledInput = styled.input`
   padding: 10px 10px;
   border: 1px solid #424242;
   font-family: Montserrat;
-  width: 300px;
+  width: 384px;
 `;
 
 export const InputsWrapper = styled.div`
