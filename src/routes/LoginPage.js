@@ -5,6 +5,7 @@ import Header from "../components/Header/index";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router";
+import { StyledInput, InputParagraph } from "../styles/styles";
 
 const baseURL = "https://navedex-api.herokuapp.com/v1";
 
@@ -32,23 +33,23 @@ const LoginPage = (props) => {
     <>
       <Card>
         <Header />
-        <TextField
-          variant="outlined"
-          className="classes.textField"
+        <InputParagraph>E-mail</InputParagraph>
+        <StyledInput
+          label={"E-mail"}
           name={"email"}
           value={email}
-          label="E-mail"
           onChange={(e) => setEmail(e.target.value)}
-        ></TextField>
+        ></StyledInput>
 
-        <TextField
-          variant="outlined"
+        <InputParagraph>Senha</InputParagraph>
+        <StyledInput
+          label={"Senha"}
           name={"senha"}
           type="password"
           value={password}
-          label={"Senha"}
           onChange={(e) => setPassword(e.target.value)}
-        ></TextField>
+        ></StyledInput>
+
         <Button onClick={handleLogin}>Entrar</Button>
       </Card>
     </>

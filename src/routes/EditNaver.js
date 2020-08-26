@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import Card from "../components/Card/index";
-import { TextField } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 import Header from "../components/Header/index";
 import axios from "axios";
+import {
+  FlexDiv,
+  StyledInput,
+  InputParagraph,
+  InputsWrapper,
+  Button,
+} from "../styles/styles";
 
-const AddNaverPage = () => {
+const EditNaverPage = () => {
   const [jobRole, setJobRole] = useState("");
   const [admission_date, setAdmission_date] = useState("");
   const [birthdate, setBirthdate] = useState("");
@@ -59,59 +63,65 @@ const AddNaverPage = () => {
         console.log(response);
       });
   };
-
   return (
     <>
       <Header />
-      <Card>
-        <TextField
-          variant="outlined"
-          label={"Nome"}
-          placeholder={"Nome"}
-          value={name}
-          onChange={handleNameChange}
-        ></TextField>
-        <TextField
-          variant="outlined"
-          label={"Cargo"}
-          placeholder={"Cargo"}
-          value={jobRole}
-          onChange={handleJobRoleChange}
-        ></TextField>
-        <TextField
-          variant="outlined"
-          label={"Idade"}
-          placeholder={"Idade"}
-          value={birthdate}
-          onChange={handleBirthdateChange}
-        ></TextField>
-        <TextField
-          variant="outlined"
-          label={"Tempo de empresa"}
-          placeholder={"Tempo de empresa"}
-          value={admission_date}
-          onChange={handleAdmission_dateChange}
-        ></TextField>
-        <TextField
-          variant="outlined"
-          label={"Projetos que participou"}
-          placeholder={"Projetos que participou"}
-          value={project}
-          onChange={handlProjectChange}
-        ></TextField>
-        <TextField
-          variant="outlined"
-          label={"URL da foto do Naver"}
-          placeholder={"URL da foto do Naver"}
-          value={url}
-          onChange={handleUrlChange}
-        ></TextField>
-        <Button onClick={onClickSalvar} variant="contained" color="primary">
-          Salvar
-        </Button>
-      </Card>
+      <FlexDiv>
+        <InputsWrapper>
+          <InputParagraph>Nome</InputParagraph>
+          <StyledInput
+            name={"name"}
+            placeholder={"Nome"}
+            value={name}
+            onChange={handleNameChange}
+          ></StyledInput>
+
+          <InputParagraph>Idade</InputParagraph>
+          <StyledInput
+            name={"idade"}
+            placeholder={"Idade"}
+            value={birthdate}
+            onChange={handleBirthdateChange}
+          ></StyledInput>
+
+          <InputParagraph>Projetos que participou</InputParagraph>
+          <StyledInput
+            name={"projetos"}
+            placeholder={"Projetos que participou"}
+            value={project}
+            onChange={handlProjectChange}
+          ></StyledInput>
+        </InputsWrapper>
+
+        <InputsWrapper>
+          <InputParagraph>Cargo</InputParagraph>
+          <StyledInput
+            name={"cargo"}
+            placeholder={"Cargo"}
+            value={jobRole}
+            onChange={handleJobRoleChange}
+          ></StyledInput>
+
+          <InputParagraph>Tempo de empresa</InputParagraph>
+          <StyledInput
+            name={"tempo-de-empresa"}
+            placeholder={"Tempo de empresa"}
+            value={admission_date}
+            onChange={handleAdmission_dateChange}
+          ></StyledInput>
+
+          <InputParagraph>URL da foto do Naver</InputParagraph>
+          <StyledInput
+            name={"url"}
+            placeholder={"URL da foto do Naver"}
+            value={url}
+            onChange={handleUrlChange}
+          ></StyledInput>
+          <Button onClick={onClickSalvar}>Salvar</Button>
+        </InputsWrapper>
+      </FlexDiv>
     </>
   );
 };
 
-export default AddNaverPage;
+export default EditNaverPage;

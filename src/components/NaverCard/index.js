@@ -16,5 +16,5 @@ const useStyles = makeStyles({
 });
 
 export default function NaverCard(props) {
-  return <div className="card">{props.naver.name}</div>;
+  return <div className="card">{props.naver}</div>;
 }
