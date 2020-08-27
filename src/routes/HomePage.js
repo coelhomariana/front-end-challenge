@@ -2,7 +2,16 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header/index";
 import axios from "axios";
 import { useHistory } from "react-router";
-import styled from "styled-components";
+import {
+  NaverCardName,
+  NaverCardJobRole,
+  FlexDiv,
+  FlexColumn,
+  Button,
+  Wrapper,
+} from "../styles/styles";
+import DeleteNaver from "../components/cardTeste";
+import EditNaver from "../components/EditNaver";
 
 const baseURL = "https://navedex-api.herokuapp.com/v1";
 
@@ -39,12 +48,31 @@ const HomePage = (props) => {
     getNaversList();
   }, [setNaversList]);
 
+  const routeChange = () => {
+    let path = `/addnaver`;
+    history.push(path);
+  };
+
   return (
     <>
       <Header></Header>
-      <div>
+      <Wrapper>
         <h1>Navers</h1>
-      </div>
+        <Button onClick={routeChange}>Adicionar Naver</Button>
+      </Wrapper>
+
+      <FlexDiv>
+        {naversList.map((naver) => {
+          return (
+            <FlexColumn>
+              <NaverCardName>{naver.name}</NaverCardName>
+              <NaverCardJobRole>{naver.job_role}</NaverCardJobRole>
+              <DeleteNaver naverId={naver.id}></DeleteNaver>
+              <EditNaver></EditNaver>
+            </FlexColumn>
+          );
+        })}
+      </FlexDiv>
     </>
   );
 };

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Card from "../components/Card/index";
+import Logo from "../img/logo.png";
 import { Button } from "../styles/styles";
-import Header from "../components/Header/index";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router";
 import { StyledInput, InputParagraph } from "../styles/styles";
 
@@ -32,7 +31,9 @@ const LoginPage = (props) => {
   return (
     <>
       <Card>
-        <Header />
+        <div>
+          <img src={Logo} alt="website logo" />
+        </div>
         <InputParagraph>E-mail</InputParagraph>
         <StyledInput
           label={"E-mail"}
