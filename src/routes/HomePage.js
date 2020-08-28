@@ -10,7 +10,7 @@ import {
   Button,
   Wrapper,
 } from "../styles/styles";
-import DeleteNaver from "../components/cardTeste";
+import DeleteNaver from "../components/DeleteNaver";
 import EditNaver from "../components/EditNaver";
 
 const baseURL = "https://navedex-api.herokuapp.com/v1";

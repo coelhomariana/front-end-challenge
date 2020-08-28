@@ -9,6 +9,7 @@ function Header(props) {
   const routeChange = () => {
     let path = `/`;
     history.push(path);
+    localStorage.clear();
   };
   return (
     <>

@@ -8,6 +8,7 @@ import {
   InputsWrapper,
   Button,
 } from "../styles/styles";
+import { useHistory } from "react-router-dom";
 
 const AddNaverPage = () => {
   const [jobRole, setJobRole] = useState("");
@@ -16,6 +17,7 @@ const AddNaverPage = () => {
   const [project, setProject] = useState("");
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
+  const history = useHistory();
 
   const handleJobRoleChange = (event) => {
     setJobRole(event.target.value);
@@ -42,8 +44,8 @@ const AddNaverPage = () => {
   };
 
   const onClickSalvar = async () => {
-    const response = await axios
-      .post(
+    try {
+      const response = await axios.post(
         "https://navedex-api.herokuapp.com/v1/navers",
         {
           job_role: jobRole,
@@ -58,10 +60,13 @@ const AddNaverPage = () => {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
-      )
-      .then(function (response) {
-        console.log(response);
-      });
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+      window.alert("Dados incorretos, tente novamente.");
+    }
+    history.push("/home");
   };
 
   return (
