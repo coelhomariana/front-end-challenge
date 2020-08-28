@@ -72,3 +72,8 @@ export const NaverCardJobRole = styled.p`
   font-family: Montserrat;
   margin: 8px;
 `;
+
+export const NaverPhoto = styled.img`
+  max-width: 300px;
+  max-height: 300px;
+`;

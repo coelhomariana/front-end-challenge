@@ -9,6 +9,7 @@ import {
   FlexColumn,
   Button,
   Wrapper,
+  NaverPhoto,
 } from "../styles/styles";
 import DeleteNaver from "../components/DeleteNaver";
 import EditNaver from "../components/EditNaver";
@@ -65,6 +66,7 @@ const HomePage = (props) => {
         {naversList.map((naver) => {
           return (
             <FlexColumn>
+              <NaverPhoto src={naver.url}></NaverPhoto>
               <NaverCardName>{naver.name}</NaverCardName>
               <NaverCardJobRole>{naver.job_role}</NaverCardJobRole>
               <DeleteNaver naverId={naver.id}></DeleteNaver>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "../components/Card/index";
+import BlackBorderCard from "../components/BlackBorderCard";
 import Logo from "../img/logo.png";
 import { Button } from "../styles/styles";
 import axios from "axios";
@@ -30,7 +30,7 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <Card>
+      <BlackBorderCard>
         <div>
           <img src={Logo} alt="website logo" />
         </div>
@@ -52,7 +52,7 @@ const LoginPage = (props) => {
         ></StyledInput>
 
         <Button onClick={handleLogin}>Entrar</Button>
-      </Card>
+      </BlackBorderCard>
     </>
   );
 };
