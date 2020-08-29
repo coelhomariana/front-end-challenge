@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header/index";
 import axios from "axios";
 import {
@@ -9,13 +9,31 @@ import {
   Button,
 } from "../styles/styles";
 
-const EditNaverPage = () => {
+const EditNaverPage = (props) => {
   const [jobRole, setJobRole] = useState("");
   const [admission_date, setAdmission_date] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [project, setProject] = useState("");
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    setJobRole(localStorage.getItem("cargo"));
+    setProject(localStorage.getItem("projetos"));
+    setName(localStorage.getItem("nome"));
+    setUrl(localStorage.getItem("url"));
+    const tempo = convertDate(localStorage.getItem("tempo"));
+    const idade = convertDate(localStorage.getItem("idade"));
+    setAdmission_date(tempo);
+    setBirthdate(idade);
+  }, []);
+
+  function convertDate(date) {
+    const today = new Date();
+    const formattedDate = new Date(date);
+    const result = new Date(today - formattedDate);
+    return result.getDate().toString();
+  }
 
   const handleJobRoleChange = (event) => {
     setJobRole(event.target.value);
@@ -44,7 +62,9 @@ const EditNaverPage = () => {
   const onClickSalvar = async () => {
     const response = await axios
       .put(
-        `https://navedex-api.herokuapp.com/v1/navers/`,
+        `https://navedex-api.herokuapp.com/v1/navers/${localStorage.getItem(
+          "id"
+        )}`,
         {
           job_role: jobRole,
           admission_date: admission_date,

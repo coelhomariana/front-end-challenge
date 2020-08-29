@@ -5,15 +5,11 @@ import { useHistory } from "react-router-dom";
 
 const EditNaver = (props) => {
   const history = useHistory();
-
-  const routeChange = () => {
-    let path = `/editnaver`;
-    history.push(path);
-  };
+  const { onClick } = props;
 
   return (
     <FlexDiv>
-      <EditIcon onClick={routeChange}></EditIcon>
+      <EditIcon onClick={onClick}></EditIcon>
     </FlexDiv>
   );
 };

@@ -49,8 +49,32 @@ const HomePage = (props) => {
     getNaversList();
   }, [setNaversList]);
 
-  const routeChange = () => {
+  const goToAddNaver = () => {
     let path = `/addnaver`;
+    history.push(path);
+  };
+
+  const onEditClick = (
+    job_role,
+    admission_date,
+    birthdate,
+    name,
+    project,
+    url,
+    id
+  ) => {
+    localStorage.setItem("nome", name);
+    localStorage.setItem("idade", birthdate);
+    localStorage.setItem("projetos", project);
+    localStorage.setItem("cargo", job_role);
+    localStorage.setItem("tempo", admission_date);
+    localStorage.setItem("url", url);
+    localStorage.setItem("id", id);
+    goToEditNaver();
+  };
+
+  const goToEditNaver = () => {
+    let path = `/editnaver`;
     history.push(path);
   };
 
@@ -59,7 +83,7 @@ const HomePage = (props) => {
       <Header></Header>
       <Wrapper>
         <h1>Navers</h1>
-        <Button onClick={routeChange}>Adicionar Naver</Button>
+        <Button onClick={goToAddNaver}>Adicionar Naver</Button>
       </Wrapper>
 
       <FlexDiv>
@@ -70,7 +94,19 @@ const HomePage = (props) => {
               <NaverCardName>{naver.name}</NaverCardName>
               <NaverCardJobRole>{naver.job_role}</NaverCardJobRole>
               <DeleteNaver naverId={naver.id}></DeleteNaver>
-              <EditNaver></EditNaver>
+              <EditNaver
+                onClick={() => {
+                  onEditClick(
+                    naver.job_role,
+                    naver.admission_date,
+                    naver.birthdate,
+                    naver.name,
+                    naver.project,
+                    naver.url,
+                    naver.id
+                  );
+                }}
+              ></EditNaver>
             </FlexColumn>
           );
         })}
