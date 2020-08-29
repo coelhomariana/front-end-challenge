@@ -11,7 +11,7 @@ Principais tecnologias utilizadas:
 
 ## Instruções para rodar
 link: 
-abject-wire.surge.sh
+www.abject-wire.surge.sh
 
 email: mariana-teste@nave.rs
 senha: nave12345
